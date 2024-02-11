@@ -11,7 +11,7 @@ const split = (wordsArray) => {
         let wordStarted = false;
 
         for (let j = 0; j < currentWord.length; j++) {
-            if (currentWord[j] === " ") {
+            if (currentWord[j] === " " || currentWord[j] === '\n' || currentWord[j] === '\t') {
                 if (wordStarted) {
                     array.push(wordWithoutSpaces);
                     wordWithoutSpaces = "";
