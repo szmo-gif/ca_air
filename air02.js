@@ -15,8 +15,21 @@ const joinArgument = (argument) => {
     return join
 }
 
-//apply function 
+//handle error 
+const isNotArguments = () => {
+    const argument = getArgument();
+    if (!argument.length) {
+        console.log("Erreur : veuillez écrire des arguments dont le dernier est le séparateur");
+        return true;
+    }
+    return false;
+}
+
+// apply function
 const applyFunction = () => {
+    if (isNotArguments()) {
+        return;
+    }
     const argument = getArgument();
     const principalFunction = joinArgument(argument);
 

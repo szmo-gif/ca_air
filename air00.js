@@ -32,8 +32,21 @@ const split = (getArgument) => {
     return array;
 }
 
-//apply function 
-const applyFunction= () => {
+//handle error 
+const isNotArgument = () => {
+    const argument = getArgument();
+    if (!argument.length) {
+        console.log("Erreur : veuillez écrire plusieurs arguments.");
+        return true;
+    }
+    return false;
+}
+
+// apply function
+const applyFunction = () => {
+    if (isNotArgument()) {
+        return;
+    }
     const arguments = getArgument();
     const principalFunction = split(arguments);
 
