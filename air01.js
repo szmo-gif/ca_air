@@ -1,37 +1,33 @@
-//parcing
+// Parcing
 const getArgument = () => {
     return process.argv.slice(2);
 }
 
-// principal function 
+// Fonction principale 
 const targetSplit = () => {
-    const userArray = getArgument()
-    const lastCaratere = userArray[userArray.length - 1];
-    const beforeSplit = [];
-    const afterSplit = []
+    const userArray = getArgument();
+    const separator = userArray[userArray.length - 1];
+    let result = [];
+    let currentPhrase = [];
 
-    for (let i = 0; i < userArray.length - 1; i++) {
-        if (userArray[i] === lastCaratere) {
-            if (i > 0) {
-                beforeSplit.push(userArray.slice(0, i).join(' '));
-            }
-            if (i < userArray.length - 1) {
-                afterSplit.push(userArray.slice(i + 1, userArray.length - 1).join(' '));
-            }
+    for (let i = 0; i < userArray.length; i++) {
+        if (userArray[i] === separator) {
+            result.push(currentPhrase.join(' ')); // Joindre les éléments pour former la phrase
+            currentPhrase = []; // Réinitialiser la phrase courante
+        } else {
+            currentPhrase.push(userArray[i]); // Ajouter l'élément à la phrase courante
         }
     }
 
-    return [
-        beforeSplit.join(' '), afterSplit.join(' ')
-    ]
+    result.push(currentPhrase.join(' ')); // Ajouter la dernière phrase après la dernière occurrence du séparateur
+
+    return result;
 }
 
-//apply function
+// Appliquer la fonction
 const applyFunction = () => {
-    const arguments = getArgument();
-    const principalFunction = targetSplit(arguments)
-
+    const principalFunction = targetSplit();
     console.log(principalFunction.join('\n'));
 }
 
-applyFunction()
+applyFunction();
