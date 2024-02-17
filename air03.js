@@ -44,7 +44,7 @@ const applyFunction = () => {
     const argument = getArgument();
     const principalFunction = LookForTheIntruder(argument);
 
-    console.log(principalFunction);
+    console.log(principalFunction.join(" "));
 }
 
 applyFunction();
