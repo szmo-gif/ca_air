@@ -4,7 +4,7 @@ const getArgument = () => {
 } 
 
 //principal function
-const LookForTheIntruder = (argument) => {
+const lookForTheIntruder = (argument) => {
     const numberCount = [];
 
 // Compter le nombre d'occurrences de chaque nombre
