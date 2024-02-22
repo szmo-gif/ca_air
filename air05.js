@@ -24,28 +24,27 @@ const isNotArguments = () => {
   return false;
 };
 
-const naPasOperateur = () => {
+const notOperator = () => {
   const argument = getArgument();
   const lastElement = argument[argument.length - 1];
   const operators = ["+", "-"];
   if (!operators.includes(lastElement.charAt(0))) {
-    console.log("Erreur : veuillez insérer un opérateur (+, -) à la fin.");
     return true;
   }
   return false;
 };
 
 //apply function
-const displayFunction = () => {
+const startFunction = () => {
   if (isNotArguments()) {
-    return console.log("Erreur : veuillez insérer des arguments pairs et impairs");
+    return console.log("Erreur : veuillez insérer des nombre et un opérateur");
   }
-  if (naPasOperateur()) {
-    return;
+  if (notOperator()) {
+    return console.log("Erreur : veuillez insérer un opérateur");
   }
   const argument = getArgument();
   const principalFunction = onEachOfThem(argument);
   console.log(principalFunction.join(" "));
 };
 
-displayFunction()
+startFunction()
