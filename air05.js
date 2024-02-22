@@ -19,14 +19,14 @@ const onEachOfThem = (argument) => {
 const isNotArguments = () => {
   const argument = getArgument();
   if (!argument.length) {
-    console.log("Erreur : veuillez insérer des arguments pairs et impairs");
     return true;
   }
   return false;
 };
 
 const naPasOperateur = () => {
-  const lastElement = arguments[arguments.length - 1];
+  const argument = getArgument();
+  const lastElement = argument[argument.length - 1];
   const operators = ["+", "-"];
   if (!operators.includes(lastElement.charAt(0))) {
     console.log("Erreur : veuillez insérer un opérateur (+, -) à la fin.");
@@ -38,11 +38,11 @@ const naPasOperateur = () => {
 //apply function
 const displayFunction = () => {
   if (isNotArguments()) {
+    return console.log("Erreur : veuillez insérer des arguments pairs et impairs");
+  }
+  if (naPasOperateur()) {
     return;
   }
-  /*if (naPasOperateur()) {
-    return;
-  }*/
   const argument = getArgument();
   const principalFunction = onEachOfThem(argument);
   console.log(principalFunction.join(" "));
