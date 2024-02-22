@@ -25,7 +25,7 @@ const isNotArguments = () => {
   return false;
 };
 
-/*const isNotLastElement = () => {
+const naPasOperateur = () => {
   const lastElement = arguments[arguments.length - 1];
   const operators = ["+", "-"];
   if (!operators.includes(lastElement.charAt(0))) {
@@ -33,14 +33,14 @@ const isNotArguments = () => {
     return true;
   }
   return false;
-};*/
+};
 
 //apply function
 const displayFunction = () => {
   if (isNotArguments()) {
     return;
   }
-  /*if (isNotLastElement()) {
+  /*if (naPasOperateur()) {
     return;
   }*/
   const argument = getArgument();
