@@ -34,7 +34,7 @@ const HealthPassCheck = (user) => {
       result.push(word.charAt(0).toUpperCase() + word.slice(1));
     }
   }
-  return result
+  return result;
 }
 
 //handle error
