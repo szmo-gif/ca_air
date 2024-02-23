@@ -25,13 +25,6 @@ const fusion = (firstArray, secondArray) => {
 }
 
 //handle error
-const isNotArguments = (argument) => {
-  if (!argument.length) {
-    return true;
-  }
-  return false;
-}
-
 const isNotIndex = (index) => {
   if (index === -1) {
     return true;
@@ -47,10 +40,6 @@ const startFunction = () => {
   }
 
   const firstArray = getFirstArray(index);
-  if (isNotArguments(firstArray)) {
-    return console.log("Erreur : veuillez écrire deux tableau séparer par l'index fusion");
-  }
-
   const secondArray = getSecondArray(index);
   const fusionResult = fusion(firstArray, secondArray);
 
