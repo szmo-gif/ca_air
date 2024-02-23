@@ -8,7 +8,7 @@ const getNewElement = () => {
 }
 
 // principal function
-const sortedInsert = (array, newElement) => {
+const Insert = (array, newElement) => {
   const newArray = []
   for (let i = 0; i < array.length; i++) {
     newArray.push(array[i])
@@ -48,7 +48,7 @@ const startFunction = () => {
     return console.log("Erreur : veuillez insérer un nombre à insérer dans le premier tableau");
   }
 
-  const startprincipalFunction = sortedInsert(argument, newElement);
+  const startprincipalFunction = Insert(argument, newElement);
   console.log(startprincipalFunction.sort().join(" "));
 }
 
