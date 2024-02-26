@@ -46,7 +46,7 @@ const isNotArguments = (argument) => {
 };
 
 //start function
-const startFunction = () => {
+const displayHealthPassCheck = () => {
   const arguments = getArgument();
   if (isNotArguments(arguments)) {
     return console.log("Erreur : veuillez insérer des nombre et un opérateur");
@@ -60,4 +60,4 @@ const startFunction = () => {
   console.log(principalFunction.join(" "));
 }
 
-startFunction()
+displayHealthPassCheck()
