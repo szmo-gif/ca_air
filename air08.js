@@ -3,6 +3,7 @@ const getArray = () => {
   return process.argv.slice(2);
 }
 
+//@TODO : CHANGE NAMING VARIABLE
 const isIndex = (array) => {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === 'fusion') {
@@ -21,6 +22,7 @@ const isSecondArray = (array) => {
 }
 
 //principal function
+//@TODO : CHANGE NAMING VARIABLE
 const fusion = (firstArray, secondArray) => {
   const newArray = [];
   let i = 0;
@@ -62,6 +64,7 @@ const isNotSorted = (firstArray, secondArray) => {
 }
 
 //start function
+//@TODO : CHANGE NAMING VARIABLE
 const fusionSort = () => {
   const array = getArray();
   const index = isIndex(array);
@@ -77,7 +80,7 @@ const fusionSort = () => {
 
   const fusionResult = fusion(firstArray, secondArray);
 
-  console.log(fusionResult.join(' '));
+  return console.log(fusionResult.join(' '));
 }
 
 fusionSort()

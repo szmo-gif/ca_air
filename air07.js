@@ -1,4 +1,5 @@
 // parcing
+// @TODO : DELETE getNewElement WITH MOVE SLICE METHODE FOR RESOLUTION
 const getArgument = () => {
   return process.argv.slice(2, -1);
 }
@@ -8,6 +9,7 @@ const getNewElement = () => {
 }
 
 // principal function
+// @TODO : CHANGE NAMING VARIABLE
 const Insert = (array, newElement) => {
   const newArray = [];
   let inserted = false; // Variable pour suivre si le nouvel élément a été inséré
@@ -58,7 +60,7 @@ const inserNewElement = () => {
   }
 
   const startprincipalFunction = Insert(argument, newElement);
-  console.log(startprincipalFunction.join(" "));
+  return console.log(startprincipalFunction.join(" "));
 }
 
 inserNewElement()
