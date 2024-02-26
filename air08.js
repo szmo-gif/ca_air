@@ -1,27 +1,42 @@
 //parcing
-const getIndex = () => {
-  return process.argv.indexOf('fusion');
+const getArray = () => {
+  return process.argv.slice(2);
 }
 
-const getFirstArray = (index) => {
-  return process.argv.slice(2, index);
+const isIndex = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === 'fusion') {
+      return i;
+    } 
+  }
+  return -1;
 }
 
-const getSecondArray = (index) => {
-  return process.argv.slice(index + 1);
+const isFirstArray = (array) => {
+  return array.slice(0, isIndex(array));
+}
+
+const isSecondArray = (array) => {
+  return array.slice(isIndex(array) + 1);
 }
 
 //principal function
 const fusion = (firstArray, secondArray) => {
   const newArray = [];
-  for (let i = 0; i < firstArray.length; i++) {
-    newArray.push(firstArray[i]);
+  let i = 0;
+  let j = 0;
+
+  while (i <= firstArray.length && j <= secondArray.length) {
+    if (firstArray[i] < secondArray[j]) {
+      newArray.push(firstArray[i]);
+      i++;
+    } else {
+      newArray.push(secondArray[j]);
+      j++;
+    }
   }
 
-  for (let j = 0; j < secondArray.length; j++) {
-    newArray.push(secondArray[j]);
-  }
-  return newArray
+  return newArray;
 }
 
 //handle error
@@ -32,18 +47,37 @@ const isNotIndex = (index) => {
   return false;
 }
 
+const isNotSorted = (firstArray, secondArray) => {
+  for (let i = 0; i <= firstArray.length; i++) {
+    if (firstArray[i] > firstArray[i + 1]) {
+      return true;
+    }
+  for (let j = 0; j < secondArray.length; j++) {
+    if (secondArray[j] > secondArray[j + 1]) {
+      return true;
+    }
+  }
+  }
+  return false;
+}
+
 //start function
-const startFunction = () => {
-  const index = getIndex();
+const fusionSort = () => {
+  const array = getArray();
+  const index = isIndex(array);
   if (isNotIndex(index)) {
     return console.log("Erreur : veuillez écrire l'index 'fusion'");
   }
 
-  const firstArray = getFirstArray(index);
-  const secondArray = getSecondArray(index);
+  const firstArray = isFirstArray(array);
+  const secondArray = isSecondArray(array);
+  if (isNotSorted(firstArray, secondArray)) {
+    return console.log("Erreur : les tableaux ne sont pas triés");
+  }
+
   const fusionResult = fusion(firstArray, secondArray);
 
-  console.log(fusionResult.sort().join(' '));
+  console.log(fusionResult.join(' '));
 }
 
-startFunction()
+fusionSort()
