@@ -29,7 +29,7 @@ const displayRotationArgument = () => {
 
   const rotation = isRotationArgument(argument);
 
-  console.log(rotation.join(" "));
+  return console.log(rotation.join(" "));
 }
 
 displayRotationArgument()
