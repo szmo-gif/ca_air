@@ -32,15 +32,15 @@ const isNotArguments = () => {
 }
 
 // apply function
-const applyFunction = () => {
+const displayOnlyOne = () => {
   if (isNotArguments()) {
     return;
   }
 
   const argument = splitUser(joinUser(getArgument()));
-  const applyFunction = onlyOne(argument)
+  const displayOnlyOne = onlyOne(argument)
 
-  console.log(applyFunction);
+  return console.log(displayOnlyOne);
 };
 
-applyFunction()
+displayOnlyOne()

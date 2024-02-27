@@ -57,7 +57,7 @@ const displayHealthPassCheck = () => {
   const splitArgumentsResult = splitArgument(LowerCaseArgument);
 
   const principalFunction = HealthPassCheck(splitArgumentsResult);
-  console.log(principalFunction.join(" "));
+  return console.log(principalFunction.join(" "));
 }
 
 displayHealthPassCheck()

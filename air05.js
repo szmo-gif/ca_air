@@ -35,7 +35,7 @@ const notOperator = () => {
 };
 
 //apply function
-const startFunction = () => {
+const displayonEachofThem = () => {
   if (isNotArguments()) {
     return console.log("Erreur : veuillez insérer des nombre et un opérateur");
   }
@@ -44,7 +44,7 @@ const startFunction = () => {
   }
   const argument = getArgument();
   const principalFunction = onEachOfThem(argument);
-  console.log(principalFunction.join(" "));
+  return console.log(principalFunction.join(" "));
 };
 
-startFunction()
+displayonEachofThem()

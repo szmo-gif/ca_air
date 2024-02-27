@@ -43,14 +43,14 @@ const isNotArgument = () => {
 }
 
 // apply function
-const applyFunction = () => {
+const displaySplitArgument = () => {
     if (isNotArgument()) {
         return;
     }
     const arguments = getArgument();
     const principalFunction = split(arguments);
 
-    console.log(principalFunction.join('\n'));
+    return console.log(principalFunction.join('\n'));
 }
 
-applyFunction();
+displaySplitArgument();

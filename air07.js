@@ -1,20 +1,20 @@
 // parcing
-// @TODO : DELETE getNewElement WITH MOVE SLICE METHODE FOR RESOLUTION
 const getArgument = () => {
-  return process.argv.slice(2, -1);
+  return process.argv.slice(2);
 }
 
-const getNewElement = () => {
-  return process.argv.slice(-1);
+const getNewElement = (argument) => {
+  const newElement = argument[argument.length - 1];
+  return newElement;
 }
 
 // principal function
 // @TODO : CHANGE NAMING VARIABLE
-const Insert = (array, newElement) => {
+const insert = (array, newElement) => {
   const newArray = [];
   let inserted = false; // Variable pour suivre si le nouvel élément a été inséré
 
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length - 1; i++) {
     if (parseInt(newElement) < parseInt(array[i]) && !inserted) {
       newArray.push(newElement); // Insérer le nouvel élément
       inserted = true; // Mettre à jour le statut d'insertion
@@ -38,7 +38,7 @@ const isNotArguments = (argument) => {
 }
 
 const isNotSorted = (array) => {
-  for (let i = 0; i < array.length - 1; i++) {
+  for (let i = 0; i < array[array.length - 1]; i++) {
     if (array[i] > array[i + 1]) {
       return true;
     }
@@ -49,7 +49,7 @@ const isNotSorted = (array) => {
 //start function
 const inserNewElement = () => {
   const argument = getArgument();
-  const newElement = getNewElement();
+  const newElement = getNewElement(argument);
 
   if (isNotArguments(argument)) {
     return console.log("Erreur : veuillez insérer des nombres trié");
@@ -59,7 +59,7 @@ const inserNewElement = () => {
     return console.log("Erreur : le tableau n'est pas trié");
   }
 
-  const startprincipalFunction = Insert(argument, newElement);
+  const startprincipalFunction = insert(argument, newElement);
   return console.log(startprincipalFunction.join(" "));
 }
 

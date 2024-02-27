@@ -37,15 +37,15 @@ const isNotArguments = () => {
 }
 
 // apply function
-const applyFunction = () => {
+const displayLookForTheIntruder = () => {
     if (isNotArguments()) {
         return;
     }
     const argument = getArgument();
     const principalFunction = LookForTheIntruder(argument);
 
-    console.log(principalFunction.join(" "));
+    return console.log(principalFunction.join(" "));
 }
 
-applyFunction();
+displayLookForTheIntruder();
 

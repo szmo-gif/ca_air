@@ -34,12 +34,12 @@ const isNotArguments = () => {
 }
 
 // apply function
-const applyFunction = () => {
+const displayTargetSplitArgument = () => {
     if (isNotArguments()) {
         return;
     }
     const principalFunction = targetSplit();
-    console.log(principalFunction.join('\n'));
+    return console.log(principalFunction.join('\n'));
 }
 
-applyFunction();
+displayTargetSplitArgument();

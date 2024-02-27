@@ -4,7 +4,7 @@ const getArray = () => {
 }
 
 //@TODO : CHANGE NAMING VARIABLE
-const isIndex = (array) => {
+const splitArgument = (array) => {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === 'fusion') {
       return i;
@@ -22,8 +22,7 @@ const isSecondArray = (array) => {
 }
 
 //principal function
-//@TODO : CHANGE NAMING VARIABLE
-const fusion = (firstArray, secondArray) => {
+const fusionArray = (firstArray, secondArray) => {
   const newArray = [];
   let i = 0;
   let j = 0;
@@ -65,9 +64,9 @@ const isNotSorted = (firstArray, secondArray) => {
 
 //start function
 //@TODO : CHANGE NAMING VARIABLE
-const fusionSort = () => {
+const displayFusionArray = () => {
   const array = getArray();
-  const index = isIndex(array);
+  const index = splitArgument(array);
   if (isNotIndex(index)) {
     return console.log("Erreur : veuillez écrire l'index 'fusion'");
   }
@@ -78,9 +77,9 @@ const fusionSort = () => {
     return console.log("Erreur : les tableaux ne sont pas triés");
   }
 
-  const fusionResult = fusion(firstArray, secondArray);
+  const fusionResult = fusionArray(firstArray, secondArray);
 
   return console.log(fusionResult.join(' '));
 }
 
-fusionSort()
+displayFusionArray()

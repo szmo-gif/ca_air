@@ -26,14 +26,14 @@ const isNotArguments = () => {
 }
 
 // apply function
-const applyFunction = () => {
+const displayJoinArgument = () => {
     if (isNotArguments()) {
         return;
     }
     const argument = getArgument();
     const principalFunction = joinArgument(argument);
 
-    console.log(principalFunction);
+    return console.log(principalFunction);
 }
 
-applyFunction();
+displayJoinArgument();
