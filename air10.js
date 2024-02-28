@@ -40,7 +40,7 @@ const fileRecoveryError = (argument) => {
 
 
 // main
-const displayShowContent = () => {
+const displayReadFile = () => {
   const argument = getArgument();
   if (isNotArgument(argument)) {
     return;
@@ -56,4 +56,4 @@ const displayShowContent = () => {
   return console.log(readArgument);
 }
 
-displayShowContent()
+displayReadFile()
