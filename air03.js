@@ -42,7 +42,7 @@ const displayLookForTheIntruder = () => {
         return;
     }
     const argument = getArgument();
-    const principalFunction = LookForTheIntruder(argument);
+    const principalFunction = lookForTheIntruder(argument);
 
     return console.log(principalFunction.join(" "));
 }
