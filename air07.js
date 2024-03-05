@@ -9,7 +9,6 @@ const getNewElement = (argument) => {
 }
 
 // principal function
-// @TODO : CHANGE NAMING VARIABLE
 const insert = (array, newElement) => {
   const newArray = [];
   let inserted = false; // Variable pour suivre si le nouvel élément a été inséré
@@ -37,14 +36,15 @@ const isNotArguments = (argument) => {
   return false;
 }
 
-const isNotSorted = (array) => {
-  for (let i = 0; i < array[array.length - 1]; i++) {
-    if (array[i] > array[i + 1]) {
+const isNotSorted = (array, newElement) => {
+  for (let i = 0; i < array.length - newElement; i++) {
+    if (parseInt(array[i]) > parseInt(array[i + 1])) {
       return true;
     }
   }
   return false;
 }
+
 
 //start function
 const inserNewElement = () => {
@@ -55,7 +55,7 @@ const inserNewElement = () => {
     return console.log("Erreur : veuillez insérer des nombres trié");
   }
 
-  if(isNotSorted(argument)) {
+  if(isNotSorted(argument, newElement)) {
     return console.log("Erreur : le tableau n'est pas trié");
   }
 
