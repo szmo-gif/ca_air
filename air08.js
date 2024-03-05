@@ -14,11 +14,11 @@ const splitArgument = (array) => {
 }
 
 const isFirstArray = (array) => {
-  return array.slice(0, isIndex(array));
+  return array.slice(0, splitArgument(array));
 }
 
 const isSecondArray = (array) => {
-  return array.slice(isIndex(array) + 1);
+  return array.slice(splitArgument(array) + 1);
 }
 
 //principal function
