@@ -4,8 +4,7 @@ const getArgument = () => {
 }
 
 // Fonction principale 
-const targetSplit = () => {
-    const userArray = getArgument();
+const targetSplit = (userArray) => {
     const separator = userArray[userArray.length - 1];
     let result = [];
     let currentPhrase = [];
@@ -24,8 +23,7 @@ const targetSplit = () => {
     return result;
 }
 //handle error 
-const isNotArguments = () => {
-    const argument = getArgument();
+const isNotArguments = (argument) => {
     if (!argument.length) {
         console.log("Erreur : veuillez écrire des arguments dont le dernier est le séparateur");
         return true;
@@ -35,10 +33,11 @@ const isNotArguments = () => {
 
 // apply function
 const displayTargetSplitArgument = () => {
-    if (isNotArguments()) {
+    const userArray = getArgument();
+    if (isNotArguments(userArray)) {
         return;
     }
-    const principalFunction = targetSplit();
+    const principalFunction = targetSplit(userArray);
     return console.log(principalFunction.join('\n'));
 }
 
