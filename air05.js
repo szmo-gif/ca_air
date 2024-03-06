@@ -16,16 +16,14 @@ const onEachOfThem = (argument) => {
 }
 
 //handle error
-const isNotArguments = () => {
-  const argument = getArgument();
+const isNotArguments = (argument) => {
   if (!argument.length) {
     return true;
   }
   return false;
 };
 
-const notOperator = () => {
-  const argument = getArgument();
+const notOperator = (argument) => {
   const lastElement = argument[argument.length - 1];
   const operators = ["+", "-"];
   if (!operators.includes(lastElement.charAt(0))) {
@@ -36,13 +34,13 @@ const notOperator = () => {
 
 //apply function
 const displayonEachofThem = () => {
-  if (isNotArguments()) {
+  const argument = getArgument();
+  if (isNotArguments(argument)) {
     return console.log("Erreur : veuillez insérer des nombre et un opérateur");
   }
-  if (notOperator()) {
+  if (notOperator(argument)) {
     return console.log("Erreur : veuillez insérer un opérateur");
   }
-  const argument = getArgument();
   const principalFunction = onEachOfThem(argument);
   return console.log(principalFunction.join(" "));
 };
