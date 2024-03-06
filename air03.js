@@ -27,8 +27,7 @@ const lookForTheIntruder = (argument) => {
 }
 
 //handle error 
-const isNotArguments = () => {
-    const argument = getArgument();
+const isNotArguments = (argument) => {
     if (!argument.length) {
         console.log("Erreur : veuillez écrire des arguments pairs et 1 impairs");
         return true;
@@ -38,10 +37,10 @@ const isNotArguments = () => {
 
 // apply function
 const displayLookForTheIntruder = () => {
-    if (isNotArguments()) {
+    const argument = getArgument();
+    if (isNotArguments(argument)) {
         return;
     }
-    const argument = getArgument();
     const principalFunction = lookForTheIntruder(argument);
 
     return console.log(principalFunction.join(" "));
