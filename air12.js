@@ -15,7 +15,7 @@ const partionArray = (low, high, array) => {
   const pivot = array[high];
   let i = low - 1;
 
-  for (let j = low; j <= high - 1; j++) {
+  for (let j = low; j < high; j++) {
     if (array[j] < pivot) {
       i++;
       swap(array, i, j);
