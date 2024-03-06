@@ -3,7 +3,6 @@ const getArray = () => {
   return process.argv.slice(2);
 }
 
-//@TODO : CHANGE NAMING VARIABLE
 const splitArgument = (array) => {
   for (let i = 0; i < array.length; i++) {
     if (array[i] === 'fusion') {
@@ -63,7 +62,6 @@ const isNotSorted = (firstArray, secondArray) => {
 }
 
 //start function
-//@TODO : CHANGE NAMING VARIABLE
 const displayFusionArray = () => {
   const array = getArray();
   const index = splitArgument(array);

@@ -31,7 +31,7 @@ const HealthPassCheck = (user) => {
       }
     }
     if (!containsTarget) {
-      result.push(word.charAt(0).toUpperCase() + word.slice(1));
+      result.push(word.charAt(0).toUpperCase() + word.slice(1)); // capitalize the first letter
     }
   }
   return result;
