@@ -1,56 +1,51 @@
-//parcing
+// Parsing des arguments
 const getArgument = () => {
     return process.argv.slice(2);
 }
 
-//principal function
-const split = (getArgument) => {
+// Fonction principale pour diviser la chaîne
+const split = (splitString, separator) => {
+    let resultString = "";
+    let currentWord = "";
+    
+    for (let i = 0; i < splitString.length; i++) {
+        let currentCharacter = splitString[i];
 
-    let array = [];
-    for (let i = 0; i < getArgument.length; i++) {
-        let currentWord = getArgument[i];
-        let wordWithoutSpaces = "";
-        let wordStarted = false;
-
-        for (let j = 0; j < currentWord.length; j++) {
-            if (currentWord[j] === " " || currentWord[j] === '\n' || currentWord[j] === '\t') {
-                if (wordStarted) {
-                    array.push(wordWithoutSpaces);
-                    wordWithoutSpaces = "";
-                }
-            } else {
-            wordWithoutSpaces += currentWord[j];
-            wordStarted = true;
-            }
-        }
-
-        if (wordWithoutSpaces !== " ") {
-            array.push(wordWithoutSpaces);
+        if (currentCharacter !== separator) {
+            currentWord += currentCharacter;
+        } else {
+            resultString += currentWord + '\n'; // Ajoute le mot actuel avec un saut de ligne
+            currentWord = "";
         }
     }
+    
+    // Ajouter le dernier mot
+    if (currentWord !== "") {
+        resultString += currentWord;
+    }
 
-    return array;
+    return resultString;
 }
 
-//handle error 
-const isNotArgument = () => {
-    const argument = getArgument();
-    if (!argument.length) {
-        console.log("Erreur : veuillez écrire plusieurs arguments.");
+// Gestion de l'erreur si aucun argument n'est fourni
+const validArgument = (argument) => {
+    if (argument.length === 1) {
         return true;
     }
+    console.log("Erreur : veuillez écrire plusieurs arguments.");
     return false;
 }
 
-// apply function
+// Application de la fonction
 const displaySplitArgument = () => {
-    if (isNotArgument()) {
+    const arguments = getArgument();
+    const separator = ' '; // Utilisation de l'espace comme séparateur
+    if (!validArgument(arguments)) {
         return;
     }
-    const arguments = getArgument();
-    const principalFunction = split(arguments);
+    const resultString = split(arguments.join(''), separator);
 
-    return console.log(principalFunction.join('\n'));
+    console.log(resultString);
 }
 
 displaySplitArgument();
