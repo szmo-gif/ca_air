@@ -1,5 +1,5 @@
 // Parsing des arguments
-const getArgument = () => {
+const getArguments = () => {
     return process.argv.slice(2);
 }
 
@@ -38,8 +38,8 @@ const validArgument = (argument) => {
 
 // Application de la fonction
 const displaySplitArgument = () => {
-    const arguments = getArgument();
-    const separator = ' '; // Utilisation de l'espace comme séparateur
+    const arguments = getArguments();
+    const separator = ' ' || '\n' || '\t'; 
     if (!validArgument(arguments)) {
         return;
     }
