@@ -18,18 +18,18 @@ const joinArgument = (argument) => {
 }
 
 //handle error 
-const isNotArguments = () => {
+const validArgument = () => {
   const argument = getArgument();
-  if (!argument.length) {
-    console.log("Erreur : veuillez écrire des arguments dont le dernier est le séparateur");
+  if (argument.length > 0) {
     return true;
   }
+  console.log("Erreur : veuillez écrire des arguments dont le dernier est le séparateur");
   return false;
 }
 
 // apply function
 const displayJoinArgument = () => {
-  if (isNotArguments()) {
+  if (!validArgument()) {
     return;
   }
   const argument = getArgument();
