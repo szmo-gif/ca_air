@@ -22,23 +22,23 @@ const onlyOne = (splitUser) => {
 }
 
 //handle error 
-const isNotArguments = () => {
-  const argument = getArgument();
-  if (!argument.length) {
-    console.log("Erreur : veuillez écrire une chaine de caractère.");
+const validArgument = (argument) => {
+  if (argument.length === 1) {
     return true;
   }
+  console.log("Erreur : veuillez écrire une chaine de caractère.");
   return false;
 }
 
 // apply function
 const displayOnlyOne = () => {
-  if (isNotArguments()) {
+  const argument = getArgument();
+  if (!validArgument(argument)) {
     return;
   }
 
-  const argument = splitUser(joinUser(getArgument()));
-  const displayOnlyOne = onlyOne(argument)
+  const splitArray = splitUser(joinUser(argument));
+  const displayOnlyOne = onlyOne(splitArray);
 
   return console.log(displayOnlyOne);
 };
