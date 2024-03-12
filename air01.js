@@ -1,9 +1,6 @@
 // Parsing
 const getArgument = () => {
-  const args = process.argv.slice(2);
-  const text = args.slice(0, -1).join(' ');
-  const separator = args[args.length - 1];
-  return { text, separator };
+  return process.argv.slice(2);
 }
 
 // Main function
@@ -27,20 +24,23 @@ const targetSplit = (text, separator) => {
 }
 
 // Error handling
-const isNotArguments = (argument) => {
-  if (!argument.text || !argument.separator) {
-    console.log("Erreur : veuillez écrire une phrase et un séparateur");
+const validArgument = (argument) => {
+  if (argument.length === 2) {
     return true;
   }
+  console.log("Erreur : veuillez écrire une phrase et un séparateur");
   return false;
 }
 
 // Applying the function
 const displayTargetSplitArgument = () => {
-  const { text, separator } = getArgument();
-  if (isNotArguments({ text, separator })) {
+  const args = getArgument();
+  if (!validArgument(args)) {
     return;
   }
+
+  const text = args.slice(0, -1).join(' ');
+  const separator = args[args.length - 1];
   const principalFunction = targetSplit(text, separator);
   return console.log(principalFunction.join('\n'));
 }
