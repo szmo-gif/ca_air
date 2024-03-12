@@ -45,9 +45,9 @@ const displayLookForTheIntruder = () => {
   }
 
   const occurenceCount = countOfOccurrence(argument);
-  const principalFunction = lookForTheIntruder(occurenceCount);
+  const findIntruder = lookForTheIntruder(occurenceCount);
 
-  return console.log(principalFunction.join(" "));
+  return console.log(findIntruder.join(" "));
 }
 
 displayLookForTheIntruder();
