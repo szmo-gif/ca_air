@@ -41,8 +41,8 @@ const displayTargetSplitArgument = () => {
 
   const text = args.slice(0, -1).join(' ');
   const separator = args[args.length - 1];
-  const principalFunction = targetSplit(text, separator);
-  return console.log(principalFunction.join('\n'));
+  const split = targetSplit(text, separator);
+  return console.log(split.join('\n'));
 }
 
 displayTargetSplitArgument();
