@@ -3,45 +3,59 @@ const getArgument = () => {
   return process.argv.slice(2);
 };
 
+const getOperator = (argument) => {
+  return parseInt(argument[argument.length - 1]);
+}
 //principal function
-const onEachOfThem = (argument) => {
-  const isLastElement = argument.length - 1;
-  const getOperator = parseInt(argument[isLastElement]);
+const onEachOfThem = (argument, opérateur) => {
   let result = [];
   for (let i = 0; i < argument.length - 1; i++) {
-    result.push(parseInt(argument[i]) + getOperator);
-    
+    result.push(parseInt(argument[i]) + opérateur);
   }
   return result
 }
 
 //handle error
-const isNotArguments = (argument) => {
-  if (!argument.length) {
+const validArgument = (argument) => {
+  if (argument.length > 0) {
     return true;
   }
+  console.log("Erreur : veuillez insérer des arguments");
   return false;
 };
 
-const notOperator = (argument) => {
-  const lastElement = argument[argument.length - 1];
-  const operators = ["+", "-"];
-  if (!operators.includes(lastElement.charAt(0))) {
+const argumentIsNumber = (argument) => {
+  if (Number.isInteger(parseInt(argument))) {
     return true;
   }
+  console.log("Erreur : veuillez insérer des nombres");
+}
+
+const validOperator = (operator) => {
+  const regex = /^[+-]?\d+$/;
+  if (regex.test(operator)) {
+    return true;
+  }
+  console.log("Erreur : veuillez insérer un opérateur");
   return false;
 };
 
 //apply function
 const displayonEachofThem = () => {
   const argument = getArgument();
-  if (isNotArguments(argument)) {
-    return console.log("Erreur : veuillez insérer des nombre et un opérateur");
+  if (!validArgument(argument)) {
+    return;
   }
-  if (notOperator(argument)) {
-    return console.log("Erreur : veuillez insérer un opérateur");
+
+  if (!argumentIsNumber(argument)) {
+    return;
   }
-  const principalFunction = onEachOfThem(argument);
+
+  const operator = getOperator(argument);
+  if (!validOperator(operator)) {
+    return;
+  }
+  const principalFunction = onEachOfThem(argument, operator);
   return console.log(principalFunction.join(" "));
 };
 
