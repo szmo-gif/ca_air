@@ -33,9 +33,9 @@ const displayJoinArgument = () => {
     return;
   }
   const argument = getArgument();
-  const principalFunction = joinArgument(argument);
+  const join = joinArgument(argument);
 
-  return console.log(principalFunction);
+  return console.log(join);
 }
 
 displayJoinArgument();
