@@ -40,38 +40,34 @@ const fusionArray = (firstArray, secondArray) => {
 }
 
 //handle error
-const isNotIndex = (index) => {
+const isIndex = (index) => {
   if (index === -1) {
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 
-const isNotSorted = (firstArray, secondArray) => {
-  for (let i = 0; i <= firstArray.length; i++) {
-    if (firstArray[i] > firstArray[i + 1]) {
-      return true;
-    }
-  for (let j = 0; j < secondArray.length; j++) {
-    if (secondArray[j] > secondArray[j + 1]) {
-      return true;
+const isSorted = (array) => {
+
+  for (let j = 0; j < array.length; j++) {
+    if (array[j] > array[j + 1]) {
+      return false;
     }
   }
-  }
-  return false;
+  return true;
 }
 
 //start function
 const displayFusionArray = () => {
   const array = getArray();
   const index = splitArgument(array);
-  if (isNotIndex(index)) {
+  if (!isIndex(index)) {
     return console.log("Erreur : veuillez écrire l'index 'fusion'");
   }
 
   const firstArray = isFirstArray(array);
   const secondArray = isSecondArray(array);
-  if (isNotSorted(firstArray, secondArray)) {
+  if (!isSorted(firstArray) || !isSorted(secondArray)) {
     return console.log("Erreur : les tableaux ne sont pas triés");
   }
 
