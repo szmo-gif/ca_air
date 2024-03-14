@@ -1,66 +1,77 @@
-// parcing
 const getArgument = () => {
   return process.argv.slice(2);
 }
 
+// Récupérer le nouvel élément à insérer
 const getNewElement = (argument) => {
-  const newElement = argument[argument.length - 1];
-  return newElement;
+  return argument.pop(); 
 }
 
-// principal function
+// Fonction principale
 const insert = (array, newElement) => {
   const newArray = [];
-  let inserted = false; // Variable pour suivre si le nouvel élément a été inséré
 
-  for (let i = 0; i < array.length - 1; i++) {
-    if (parseInt(newElement) < parseInt(array[i]) && !inserted) {
-      newArray.push(newElement); // Insérer le nouvel élément
-      inserted = true; // Mettre à jour le statut d'insertion
+  for (let i = 0; i < array.length; i++) {
+    if (newElement < array[i]) {
+      newArray.push(newElement);
+      newArray.push(...array.slice(i));
+      return newArray;
     }
-    newArray.push(array[i]); // Ajouter l'élément actuel du tableau
+    newArray.push(array[i]);
   }
 
-  if (!inserted) {
-    newArray.push(newElement); // Si le nouvel élément est le plus grand, l'ajouter à la fin
-  }
+  newArray.push(newElement);
 
   return newArray;
 }
-
-//handle error
-const isNotArguments = (argument) => {
-  if (!argument.length) {
+// Vérifier si les arguments ont été fournis
+const validArguments = (argument) => {
+  if (argument.length > 0) {
     return true;
   }
   return false;
 }
 
-const isNotSorted = (array, newElement) => {
-  for (let i = 0; i < array.length - newElement; i++) {
-    if (parseInt(array[i]) > parseInt(array[i + 1])) {
-      return true;
+// Vérifier si tous les éléments du tableau sont des nombres valides
+const isNumber = (argument) => {
+  for (let i = 0; i < argument.length; i++) {
+    if (isNaN(argument[i])) {
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
+// Vérifier si le tableau est trié
+const isSorted = (array) => {
+  for (let i = 0; i < array.length - 1; i++) {
+    if ((array[i]) > (array[i + 1])) {
+      return false;
+    }
+  }
+  return true;
+}
 
-//start function
-const inserNewElement = () => {
+const insertNewElement = () => {
   const argument = getArgument();
-  const newElement = getNewElement(argument);
 
-  if (isNotArguments(argument)) {
-    return console.log("Erreur : veuillez insérer des nombres trié");
+  if (!validArguments(argument)) {
+    return console.log("Erreur : Veuillez insérer des nombres triés.");
   }
 
-  if(isNotSorted(argument, newElement)) {
-    return console.log("Erreur : le tableau n'est pas trié");
+  if (!isNumber(argument)) {
+    return console.log("Erreur : Veuillez insérer des nombres valides.");
+  }
+  
+  const newElement = getNewElement(argument); 
+
+  if (!isSorted(argument)) {
+    return console.log("Erreur : Le tableau n'est pas trié.");
   }
 
-  const startprincipalFunction = insert(argument, newElement);
-  return console.log(startprincipalFunction.join(" "));
+  const result = insert(argument, newElement);
+
+  console.log(result.join(" "));
 }
 
-inserNewElement()
+insertNewElement();
