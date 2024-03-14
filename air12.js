@@ -1,16 +1,17 @@
-//parcing
+// Parsing des arguments
 const getArgument = () => {
   return process.argv.slice(2);
 }
 
-//principal function
-const swap = (user, i, j) => {
-  const temp = user[i];
-  user[i] = user[j];
-  user[j] = temp;
-  return user
+// Fonction de permutation
+const swap = (array, i, j) => {
+  const temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
+  return array; // Modification pour renvoyer le tableau modifié
 }
 
+// Partitionnement d'un tableau
 const partionArray = (low, high, array) => {
   const pivot = array[high];
   let i = low - 1;
@@ -25,6 +26,7 @@ const partionArray = (low, high, array) => {
   return i + 1;
 }
 
+// Tri rapide (QuickSort)
 const quickSort = (low, high, array) => {
   if (low < high) {
     let newPivot = partionArray(low, high, array);
@@ -34,39 +36,52 @@ const quickSort = (low, high, array) => {
   return array;
 }
 
-//handle error
-const isNotArgument = (argument) => {
-  if (!argument.length) {
-    console.log("Erreur : veuillez écrire des nombres");
+// Validation des arguments
+const isArgument = (argument) => {
+  if (argument.length > 0) {
+    return true;
+  }
+  console.log("Erreur : veuillez écrire des nombres");
+  return false;
+}
+
+// Validation d'un nombre
+const isNumber = (number) => {
+  if (!isNaN(number)) {
     return true;
   }
   return false;
 }
 
-const isNotNumber = (number) => {
-  if (isNaN(number)) {
-    console.log("Erreur : veuillez écrire des nombre");
-    return true;
+// Validation d'un tableau de nombres
+const areNumbers = (array) => {
+  for (let number of array) {
+    if (!isNumber(number)) {
+      console.log("Erreur : veuillez écrire des nombres");
+      return false;
+    }
   }
-  return false;
+  return true;
 }
 
-//main
+// Fonction principale
 const displayquickSort = () => {
   const argument = getArgument();
-  if (isNotArgument(argument)) {
+  if (!isArgument(argument)) {
     return;
   }
 
-  if (isNotNumber(argument[0])) {
+  const numbers = [];
+  for (let i = 0; i < argument.length; i++) {
+    numbers.push(parseInt(argument[i]));
+  }
+  if (!areNumbers(numbers)) {
     return;
   }
-  // Convertir les arguments en nombres
-  const numbers = argument.map(Number);
 
   const sort = quickSort(0, numbers.length - 1, numbers);
   console.log(sort.join(" "));
 }
 
-
-displayquickSort()
+// Appel de la fonction principale
+displayquickSort();
