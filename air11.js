@@ -31,32 +31,44 @@ const buildPyramid = (user) => {
 }
 
 //handle error
-const isNotArgument = (argument) => {
-  if (!argument.length) {
-    console.log("Erreur : veuillez écrire un caractère et nombre d'étages");
+const isArgument = (argument) => {
+  if (argument.length > 0) {
     return true;
   }
+  console.log("Erreur : veuillez écrire un caractère et nombre d'étages");
   return false;
 }
 
-const isNotFloor = (floor) => {
-  if (!floor) {
-    console.log("Erreur : le nombre d'étages doit être superieur à 0");
+const isFloor = (floor) => {
+  if (floor > 0) {
     return true;
   }
+  console.log("Erreur : le nombre d'étages doit être superieur à 0");
   return false;
 }
+
+/*const isNumber = (number) => {
+  if (!isNaN(number)) {
+    return true;
+  }
+  console.log("Erreur : le caractère doit être un nombre");
+  return false;
+}*/
 
 // Main
 const displayPyramid = () => {
   const argument = getArgument();
 
-  if (isNotArgument(argument)) {
+  if (!isArgument(argument)) {
     return;
   }
-  if (isNotFloor(argument[1])) {
+  if (!isFloor(argument[1])) {
     return;
   }
+
+  /*if (!isNumber(argument[1])) {
+    return;
+  }*/
 
   console.log(buildPyramid(argument).join(''));
 }
