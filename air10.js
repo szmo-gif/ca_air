@@ -22,19 +22,19 @@ const ShowContent = (argument) => {
   }
 
 //handle error 
-const isNotArgument = (argument) => {
-  if (!argument.length) {
-    console.log("Erreur : veuillez écrire un nom de fichier");
+const isArgument = (argument) => {
+  if (argument.length > 0) {
     return true;
   }
+  console.log("Erreur : veuillez écrire un nom de fichier");
   return false;
 }
 
-const fileRecoveryError = (argument) => {
-  if (argument === null) {
-    console.log("Erreur : problème lors de la récupération de fichier");
+const validFile = (argument) => {
+  if (argument !== null) {
     return true;
   }
+  console.log("Erreur : problème lors de la récupération de fichier");
   return false;
 }
 
@@ -42,14 +42,14 @@ const fileRecoveryError = (argument) => {
 // main
 const displayReadFile = () => {
   const argument = getArgument();
-  if (isNotArgument(argument)) {
+  if (!isArgument(argument)) {
     return;
   }
 
   const showFile = ShowContent(argument);
 
   const readArgument = readFile(showFile);
-  if (fileRecoveryError(readArgument)) {
+  if (!validFile(readArgument)) {
     return
   }
 
