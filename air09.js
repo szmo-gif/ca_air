@@ -13,7 +13,7 @@ const isRotationArgument = (argument) => {
 }
 
 //handle error
-const isNotArguments = (argument) => {
+const isArgument = (argument) => {
   if (!argument.length) {
     return true;
   }
@@ -23,7 +23,7 @@ const isNotArguments = (argument) => {
 //starting function
 const displayRotationArgument = () => {
   const argument = getArgument();
-  if (isNotArguments(argument)) {
+  if (isArgument(argument)) {
     return console.log("Erreur : veuillez insérer des arguments");
   }
 
