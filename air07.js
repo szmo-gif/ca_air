@@ -24,7 +24,6 @@ const insert = (array, newElement) => {
 
   return newArray;
 }
-// Vérifier si les arguments ont été fournis
 const validArguments = (argument) => {
   if (argument.length > 0) {
     return true;
@@ -32,7 +31,6 @@ const validArguments = (argument) => {
   return false;
 }
 
-// Vérifier si tous les éléments du tableau sont des nombres valides
 const isNumber = (argument) => {
   for (let i = 0; i < argument.length; i++) {
     if (isNaN(argument[i])) {
@@ -42,7 +40,6 @@ const isNumber = (argument) => {
   return true;
 }
 
-// Vérifier si le tableau est trié
 const isSorted = (array) => {
   for (let i = 0; i < array.length - 1; i++) {
     if ((array[i]) > (array[i + 1])) {
