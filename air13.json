@@ -1,0 +1,67 @@
+[
+    {
+        "filename": "air00.js",
+        "args": "\"Bonjour les gars\"",
+        "expectedOutput": "Bonjour\nles\ngars"
+    },
+    {
+        "filename": "air01.js",
+        "args": "\"comment ça va les gars\" \"va\"",
+        "expectedOutput": "comment ça\nles gars"
+    },
+    {
+        "filename": "air02.js",
+        "args": "\"je\" \"test\" \"des\" \"trucs\" \" \"",
+        "expectedOutput": "je test des trucs"
+    },
+    {
+        "filename": "air03.js",
+        "args": "1 2 3 4 5 4 3 2 1",
+        "expectedOutput": "5"
+    },
+    {
+        "filename": "air04.js",
+        "args": "\"Hello milady,   bien ou quoi ??\"",
+        "expectedOutput": "Helo milady, bien ou quoi ?"
+    },
+    {
+        "filename": "air05.js",
+        "args": "1 2 3 4 5 \"+2\"",
+        "expectedOutput": "3 4 5 6 7"
+    },
+    {
+        "filename": "air06.js",
+        "args": "\"Michel\" \"Albert\" \"Thérèse\" \"Benoit\" \"t\"",
+        "expectedOutput": "Michel"
+    },
+    {
+        "filename": "air07.js",
+        "args": "1 3 4 2",
+        "expectedOutput": "1 2 3 4"
+    },
+    {
+        "filename": "air08.js",
+        "args": "10 20 30 fusion 15 25 35",
+        "expectedOutput": "10 15 20 25 30 35"
+    },
+    {
+        "filename": "air09.js",
+        "args": "\"Michel\" \"Albert\" \"Thérèse\" \"Benoit\"",
+        "expectedOutput": "Albert, Thérèse, Benoit, Michel"
+    },
+    {
+        "filename": "air10.js",
+        "args": "a.txt",
+        "expectedOutput": "je danse le mia"
+    },
+    {
+    "filename": "air11.js",
+    "args": "o 5",
+    "expectedOutput": "    o    \n   ooo   \n  ooooo  \n ooooooo \nooooooooo"
+    },
+    {
+        "filename": "air12.js",
+        "args": "6 5 4 3 2 1",
+        "expectedOutput": "1 2 3 4 5 6"
+    }
+]
