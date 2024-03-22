@@ -3,12 +3,8 @@ const { execSync } = require('child_process');
 
 // Fonction pour exécuter un fichier JS avec des arguments et retourner le résultat
 const runJSFile = (filename, args) => {
-  try {
-    const output = execSync(`node ${filename} ${args}`).toString().trim();
-    return output;
-  } catch (error) {
-    return error.stderr.toString().trim();
-  }
+    const output = execSync(`node ${filename} ${args}`, { encoding: 'utf-8' });
+    return output.trim();
 }
 
 // Fonction pour afficher un message de succès en vert
@@ -22,27 +18,38 @@ const printFailure = (message) => {
 }
 
 // Charger la liste des fichiers à tester depuis un fichier JSON
-const tests = JSON.parse(fs.readFileSync('air13.json'));
-
-let totalSuccess = 0;
-let totalTests = 0;
-
-// Parcourir chaque test
-for (const test of tests) {
-  const { filename, args, expectedOutput } = test;
-  totalTests++;
-
-  // Exécuter le fichier JS avec les arguments
-  const output = runJSFile(filename, args);
-
-  // Vérifier si la sortie correspond à la sortie attendue
-  if (output === expectedOutput) {
-    printSuccess(`${filename} : success`);
-    totalSuccess++;
-  } else {
-    printFailure(`${filename} : failure`);
+const loadTestsFromFile = (filename) => {
+  try {
+    const tests = JSON.parse(fs.readFileSync(filename, 'utf-8'));
+    return tests;
+  } catch (error) {
+    console.error('Erreur lors du chargement des tests :', error.message);
+    return [];
   }
 }
 
-// Afficher le total des succès et des tests
-console.log(`Total success: (${totalSuccess}/${totalTests})`);
+// Fonction pour exécuter les tests
+const runTests = (tests) => {
+  let totalSuccess = 0;
+  let totalTests = tests.length;
+
+  tests.forEach(({ filename, args, expectedOutput }) => {
+    // Exécuter le fichier JS avec les arguments
+    const output = runJSFile(filename, args);
+
+    // Vérifier si la sortie correspond à la sortie attendue
+    if (output === expectedOutput) {
+      printSuccess(`${filename} : success`);
+      totalSuccess++;
+    } else {
+      printFailure(`${filename} : failure`);
+    }
+  });
+
+  // Afficher le total des succès et des tests
+  console.log(`Total success: (${totalSuccess}/${totalTests})`);
+}
+
+// Charger les tests depuis le fichier JSON et les exécuter
+const tests = loadTestsFromFile('air13.json');
+runTests(tests);
